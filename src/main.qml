@@ -515,6 +515,13 @@ ApplicationWindow {
             name: qsTr("Use custom")
             description: qsTr("Select a custom .img from your computer")
         }
+        
+        ListElement {
+            url: ""
+            icon: "icons/use_custom.png"
+            name: qsTr("Use custom")
+            description: qsTr("Select a custom .img from a URL")
+        }
 
         Component.onCompleted: {
             if (imageWriter.isOnline()) {
