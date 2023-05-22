@@ -85,9 +85,9 @@ int main(int argc, char *argv[])
 #else
     QApplication app(argc, argv);
 #endif
-    app.setOrganizationName("%1").arg(imagewriter.constantOrg());
-    app.setOrganizationDomain("%1").arg(imagewriter.constantDomain());
-    app.setApplicationName("%1").arg(imagewriter.constantName());
+    app.setOrganizationName(imagewriter.constantOrg());
+    app.setOrganizationDomain(imagewriter.constantDomain());
+    app.setApplicationName(imagewriter.constantName());
     app.setWindowIcon(QIcon(":/icons/rpi-imager.ico"));
     ImageWriter imageWriter;
     NetworkAccessManagerFactory namf;
