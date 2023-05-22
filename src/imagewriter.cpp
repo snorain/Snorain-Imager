@@ -13,6 +13,7 @@
 #include "downloadstatstelemetry.h"
 #include "wlancredentials.h"
 #include <archive.h>
+#include <config.h>
 #include <archive_entry.h>
 #include <random>
 #include <QFileInfo>
@@ -281,7 +282,7 @@ void ImageWriter::startWrite()
     connect(_thread, SIGNAL(finalizing()), SLOT(onFinalizing()));
     connect(_thread, SIGNAL(preparationStatusUpdate(QString)), SLOT(onPreparationStatusUpdate(QString)));
     _thread->setVerifyEnabled(_verifyEnabled);
-    _thread->setUserAgent(QString("Mozilla/5.0 rpi-imager/%1").arg(constantVersion()).toUtf8());
+    _thread->setUserAgent(QString("Mozilla/5.0 %1/%2").arg(constantName().toUtf8()).arg(constantVersion()).toUtf8());
     _thread->setImageCustomization(_config, _cmdline, _firstrun, _cloudinit, _cloudinitNetwork, _initFormat);
 
     if (!_expectedHash.isEmpty() && _cachedFileHash != _expectedHash && _cachingEnabled)
@@ -399,6 +400,12 @@ QUrl ImageWriter::constantOsListUrl() const
 QString ImageWriter::constantVersion() const
 {
     return IMAGER_VERSION_STR;
+}
+
+/* Function to return name */
+QString ImageWriter::constantName() const
+{
+    return IMAGER_NAME;
 }
 
 /* Returns true if version argument is newer than current program */
