@@ -408,6 +408,18 @@ QString ImageWriter::constantName() const
     return IMAGER_NAME;
 }
 
+/* Function to return org */
+QString ImageWriter::constantOrg() const
+{
+    return IMAGER_ORG;
+}
+
+/* Function to return domain */
+QString ImageWriter::constantDomain() const
+{
+    return IMAGER_DOMAIN;
+}
+
 /* Returns true if version argument is newer than current program */
 bool ImageWriter::isVersionNewer(const QString &version)
 {
