@@ -85,9 +85,9 @@ int main(int argc, char *argv[])
 #else
     QApplication app(argc, argv);
 #endif
-    app.setOrganizationName("Raspberry Pi");
-    app.setOrganizationDomain("raspberrypi.org");
-    app.setApplicationName("Imager");
+    app.setOrganizationName("%1").arg(imagewriter.constantOrg());
+    app.setOrganizationDomain("%1").arg(imagewriter.constantDomain());
+    app.setApplicationName("%1").arg(imagewriter.constantName());
     app.setWindowIcon(QIcon(":/icons/rpi-imager.ico"));
     ImageWriter imageWriter;
     NetworkAccessManagerFactory namf;
@@ -125,7 +125,7 @@ int main(int argc, char *argv[])
         {
             if (args.size()-i < 2 || args[i+1].startsWith("-"))
             {
-                cerr << "Missing URL after --repo" << endl;
+                cerr << "Missing URL or file path after --repo" << endl;
                 return 1;
             }
 
