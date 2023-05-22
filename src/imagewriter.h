@@ -68,8 +68,14 @@ public:
     /* Function to return version */
     Q_INVOKABLE QString constantVersion() const;
     
-     /* Function to return name */
+    /* Function to return name */
     Q_INVOKABLE QString constantName() const;
+    
+    /* Function to return org */
+    Q_INVOKABLE QString constantOrg() const;
+    
+    /* Function to return domain */
+    Q_INVOKABLE QString constantDomain() const;
 
     /* Returns true if version argument is newer than current program */
     Q_INVOKABLE bool isVersionNewer(const QString &version);
