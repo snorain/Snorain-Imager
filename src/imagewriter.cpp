@@ -282,7 +282,7 @@ void ImageWriter::startWrite()
     connect(_thread, SIGNAL(finalizing()), SLOT(onFinalizing()));
     connect(_thread, SIGNAL(preparationStatusUpdate(QString)), SLOT(onPreparationStatusUpdate(QString)));
     _thread->setVerifyEnabled(_verifyEnabled);
-    _thread->setUserAgent(QString("Mozilla/5.0 %1/%2").arg(constantName().toUtf8()).arg(constantVersion()).toUtf8());
+    _thread->setUserAgent(QString("Mozilla/5.0 %1/%2").arg(constantName()).arg(constantVersion()).toUtf8());
     _thread->setImageCustomization(_config, _cmdline, _firstrun, _cloudinit, _cloudinitNetwork, _initFormat);
 
     if (!_expectedHash.isEmpty() && _cachedFileHash != _expectedHash && _cachingEnabled)

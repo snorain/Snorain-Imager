@@ -1,0 +1,6 @@
+build/
+obj-*
+CMakeFiles*
+src/dependencies/*
+debian/debhelper-build-stamp
+debian/.debhelper*

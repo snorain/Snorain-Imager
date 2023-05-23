@@ -64,7 +64,7 @@ ApplicationWindow {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                 fillMode: Image.PreserveAspectFit
-                source: "icons/logo_stacked_imager.png"
+                source: "icons/hooverhigh.png"
                 width: window.width
                 height: window.height/2
             }
@@ -515,13 +515,6 @@ ApplicationWindow {
             icon: "icons/use_custom.png"
             name: qsTr("Use custom")
             description: qsTr("Select a custom .img from your computer")
-        }
-        
-        ListElement {
-            url: ""
-            icon: "icons/use_custom.png"
-            name: qsTr("Use custom")
-            description: qsTr("Select a custom .img from a URL")
         }
 
         Component.onCompleted: {
@@ -1151,6 +1144,14 @@ ApplicationWindow {
             for (var i in oslist) {
                 osmodel.insert(osmodel.count-2, oslist[i])
             }
+            
+            if (imageWriter.isOnline()) {
+                osmodel.insert(osmodel.count+1, '{
+                "url": "internal://img_url",
+                "icon": "icons/use_custom.png",
+                "name": "Use custom",
+                "description": "Select a custom .img from a URL"
+        }')
 
             if ("imager" in o) {
                 var imager = o["imager"]

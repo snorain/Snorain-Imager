@@ -85,11 +85,11 @@ int main(int argc, char *argv[])
 #else
     QApplication app(argc, argv);
 #endif
-    app.setOrganizationName(imagewriter.constantOrg());
-    app.setOrganizationDomain(imagewriter.constantDomain());
-    app.setApplicationName(imagewriter.constantName());
-    app.setWindowIcon(QIcon(":/icons/rpi-imager.ico"));
     ImageWriter imageWriter;
+    app.setOrganizationName(imageWriter.constantOrg());
+    app.setOrganizationDomain(imageWriter.constantDomain());
+    app.setApplicationName(imageWriter.constantName());
+    app.setWindowIcon(QIcon(":/icons/rpi-imager.ico"));
     NetworkAccessManagerFactory namf;
     QQmlApplicationEngine engine;
     QString customQm;

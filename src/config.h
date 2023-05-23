@@ -9,6 +9,8 @@
 /* Imager info */
 #define IMAGER_NAME                       "HooverHigh Imager"
 #define IMAGER_VERSION                    "1.7.5"
+#define IMAGER_ORG                        "HooverHigh"
+#define IMAGER_DOMAIN                     "https://github.com/hooverhigh/hooverhigh-imager"
 
 /* Repository URL */
 #define OSLIST_URL                        "https://server1.hooverhigh.ml/rpi/imaging_utility_list.json"
