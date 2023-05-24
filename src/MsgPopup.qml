@@ -75,7 +75,7 @@ Popup {
             font.family: roboto.name
             font.bold: true
         }
-
+        
         Text {
             id: msgpopupbody
             font.pointSize: 12

@@ -516,10 +516,20 @@ ApplicationWindow {
             name: qsTr("Use custom")
             description: qsTr("Select a custom .img from your computer")
         }
+        
+        ListElement {
+            url: "internal://img_url"
+            icon: "icons/use_custom.png"
+            name: qsTr("Use custom from URL")
+            description: qsTr("Select a custom .img from a URL")
+        }
 
         Component.onCompleted: {
             if (imageWriter.isOnline()) {
                 fetchOSlist();
+                changeListElementByNameVisibility("Use custom from URL", osmodel, true);
+            } else {
+                changeListElementByNameVisibility("Use custom from URL", osmodel, false);
             }
         }
     }
@@ -633,7 +643,7 @@ ApplicationWindow {
                         elide: Text.ElideRight
                         color: "#646464"
                         font.weight: Font.Light
-                        visible: typeof(url) == "string" && url != "" && url != "internal://format"
+                        visible: typeof(url) == "string" && url != "" && url != "internal://format" && url != "internal://img_url"
                         text: !url ? "" :
                               typeof(extract_sha256) != "undefined" && imageWriter.isCached(url,extract_sha256)
                                 ? qsTr("Cached on your computer")
@@ -933,6 +943,25 @@ ApplicationWindow {
             optionspopup.openPopup()
         }
     }
+    
+    CustomIMGPopup {
+        id: usecustomimgurlpopup
+        /*onYes: {
+            imageWriter.setSrc(usecustomimgurlpopup.textBoxContent);
+        }*/
+    }
+    
+    MsgPopup {
+        id: usecustomimgurlaskpopup
+        continueButton: false
+        yesButton: true
+        noButton: true
+        title: qsTr("Are you sure you want to continue?")
+        text: qsTr("Warning: You have selected to download a .img from a custom URL,<br>We are not able to validate whether the URL you provide is safe or not.<br><br>Please procede at your own risk.<br>Are you sure you want to continue?")
+        onYes: {
+            usecustomimgurlpopup.openPopup()
+        }
+    }
 
     /* Utility functions */
     function httpRequest(url, callback) {
@@ -1019,6 +1048,28 @@ ApplicationWindow {
         msgpopup.text = msg
         msgpopup.openPopup()
         resetWriteButton()
+    }
+    
+    function infoBox(msg) {
+        msgpopup.title = qsTr("Information")
+        msgpopup.text = msg
+        msgpopup.openPopup()
+    }
+    
+    function selectImgURL() {
+        msgpopup.title = qsTr("Information")
+        msgpopup.text = msg
+        msgpopup.openPopup()
+    }
+    
+    function changeListElementByNameVisibility(name, model, visibility) {
+        for (var i = 0; i < model.count; i++) {
+            var item = model.get(i);
+            if (item.name === name) {
+                item.visible = visibility;
+                break; // Stop iterating once the desired item is found
+            }
+        }
     }
 
     function onSuccess() {
@@ -1141,17 +1192,15 @@ ApplicationWindow {
             var oslist = oslistFromJson(o)
             if (oslist === false)
                 return
-            for (var i in oslist) {
-                osmodel.insert(osmodel.count-2, oslist[i])
-            }
             
-            if (imageWriter.isOnline()) {
-                osmodel.insert(osmodel.count+1, '{
-                "url": "internal://img_url",
-                "icon": "icons/use_custom.png",
-                "name": "Use custom",
-                "description": "Select a custom .img from a URL"
-        }')
+            /*var level = osmodel.count-3
+            if (osmodel.count > 3) {
+              level = osmodel.count-4
+            }*/
+                
+            for (var i in oslist) {
+                osmodel.insert(osmodel.count-3, oslist[i])
+            }
 
             if ("imager" in o) {
                 var imager = o["imager"]
@@ -1266,8 +1315,7 @@ ApplicationWindow {
         } else if (d.url === "") {
             if (!imageWriter.isEmbeddedMode()) {
                 imageWriter.openFileDialog()
-            }
-            else {
+            } else {
                 if (imageWriter.mountUsbSourceMedia()) {
                     var m = newSublist()
 
@@ -1283,6 +1331,9 @@ ApplicationWindow {
                     onError(qsTr("Connect an USB stick containing images first.<br>The images must be located in the root folder of the USB stick."))
                 }
             }
+        } else if (d.url === "internal://img_url") {
+            /*infoBox("Warning: You have selected to download a .img from a custom URL,<br>We are not able to validate whether the URL you provide is safe or not.<br><br>Please procede at your own risk.")*/
+            usecustomimgurlaskpopup.openPopup()
         } else {
             imageWriter.setSrc(d.url, d.image_download_size, d.extract_size, typeof(d.extract_sha256) != "undefined" ? d.extract_sha256 : "", typeof(d.contains_multiple_files) != "undefined" ? d.contains_multiple_files : false, ospopup.categorySelected, d.name, typeof(d.init_format) != "undefined" ? d.init_format : "")
             osbutton.text = d.name
