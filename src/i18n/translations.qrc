@@ -1,17 +1,17 @@
 <RCC>
     <qresource prefix="/i18n">
-        <file>rpi-imager_de.qm</file>
-        <file>rpi-imager_en.qm</file>
-        <file>rpi-imager_fr.qm</file>
-        <file>rpi-imager_it.qm</file>
-        <file>rpi-imager_ko.qm</file>
-        <file>rpi-imager_nl.qm</file>
-        <file>rpi-imager_ru.qm</file>
-        <file>rpi-imager_sl.qm</file>
-        <file>rpi-imager_sk.qm</file>
-        <file>rpi-imager_tr.qm</file>
-        <file>rpi-imager_zh.qm</file>
-        <file>rpi-imager_ca.qm</file>
-        <file>rpi-imager_ja.qm</file>
+        <file>hooverhigh-imager_de.qm</file>
+        <file>hooverhigh-imager_en.qm</file>
+        <file>hooverhigh-imager_fr.qm</file>
+        <file>hooverhigh-imager_it.qm</file>
+        <file>hooverhigh-imager_ko.qm</file>
+        <file>hooverhigh-imager_nl.qm</file>
+        <file>hooverhigh-imager_ru.qm</file>
+        <file>hooverhigh-imager_sl.qm</file>
+        <file>hooverhigh-imager_sk.qm</file>
+        <file>hooverhigh-imager_tr.qm</file>
+        <file>hooverhigh-imager_zh.qm</file>
+        <file>hooverhigh-imager_ca.qm</file>
+        <file>hooverhigh-imager_ja.qm</file>
     </qresource>
 </RCC>

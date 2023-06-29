@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.9.4)
 OPTION (ENABLE_CHECK_VERSION "Check for version updates" ON)
 OPTION (ENABLE_TELEMETRY "Enable sending telemetry" ON)
 
-project(rpi-imager LANGUAGES CXX C)
+project(hooverhigh-imager LANGUAGES CXX C)
 set(IMAGER_VERSION_MAJOR 1)
 set(IMAGER_VERSION_MINOR 7)
 set(IMAGER_VERSION_STR "${IMAGER_VERSION_MAJOR}.${IMAGER_VERSION_MINOR}.5")
@@ -21,10 +21,10 @@ set(HEADERS config.h imagewriter.h networkaccessmanagerfactory.h nan.h drivelist
 
 # Add dependencies
 if (APPLE)
-    set_source_files_properties("icons/rpi-imager.icns" PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
+    set_source_files_properties("icons/hooverhigh-imager.icns" PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
     set(DEPENDENCIES acceleratedcryptographichash.cpp mac/macfile.cpp mac/macfile.h dependencies/mountutils/src/darwin/functions.cpp
         mac/macwlancredentials.h mac/macwlancredentials.cpp
-        dependencies/drivelist/src/darwin/list.mm dependencies/drivelist/src/darwin/REDiskList.m icons/rpi-imager.icns)
+        dependencies/drivelist/src/darwin/list.mm dependencies/drivelist/src/darwin/REDiskList.m icons/hooverhigh-imager.icns)
     enable_language(OBJC C)
 elseif (UNIX)
     set(DEPENDENCIES dependencies/mountutils/src/linux/functions.cpp linux/linuxdrivelist.cpp linux/networkmanagerapi.h linux/networkmanagerapi.cpp)
@@ -48,7 +48,7 @@ elseif (UNIX)
 elseif (WIN32)
     set(DEPENDENCIES acceleratedcryptographichash.cpp dependencies/mountutils/src/windows/functions.cpp dependencies/drivelist/src/windows/list.cpp
         windows/winfile.cpp windows/winfile.h windows/winwlancredentials.h windows/winwlancredentials.cpp
-        windows/rpi-imager.rc wlanapi_delayed.lib)
+        windows/hooverhigh-imager.rc wlanapi_delayed.lib)
     set(EXTRALIBS setupapi ${CMAKE_CURRENT_BINARY_DIR}/wlanapi_delayed.lib)
     add_custom_command(
         OUTPUT wlanapi_delayed.lib
@@ -122,10 +122,10 @@ if(${QT}WinExtras_FOUND)
     set(EXTRALIBS ${EXTRALIBS} ${QT}::WinExtras)
 endif()
 
-set(TRANSLATIONS i18n/rpi-imager_en.ts i18n/rpi-imager_nl.ts i18n/rpi-imager_zh.ts i18n/rpi-imager_tr.ts
-    i18n/rpi-imager_fr.ts i18n/rpi-imager_de.ts i18n/rpi-imager_sk.ts i18n/rpi-imager_it.ts
-    i18n/rpi-imager_ca.ts i18n/rpi-imager_sl.ts i18n/rpi-imager_ko.ts i18n/rpi-imager_ja.ts
-    i18n/rpi-imager_ru.ts)
+set(TRANSLATIONS i18n/hooverhigh-imager_en.ts i18n/hooverhigh-imager_nl.ts i18n/hooverhigh-imager_zh.ts i18n/hooverhigh-imager_tr.ts
+    i18n/hooverhigh-imager_fr.ts i18n/hooverhigh-imager_de.ts i18n/hooverhigh-imager_sk.ts i18n/hooverhigh-imager_it.ts
+    i18n/hooverhigh-imager_ca.ts i18n/hooverhigh-imager_sl.ts i18n/hooverhigh-imager_ko.ts i18n/hooverhigh-imager_ja.ts
+    i18n/hooverhigh-imager_ru.ts)
 #qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TRANSLATIONS})
 if (Qt5_FOUND)
     qt5_add_translation(QM_FILES ${TRANSLATIONS})
@@ -222,21 +222,21 @@ if (WIN32)
         COMMAND ${CMAKE_STRIP} "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.exe")
 
     # Code signing
-    find_program(SIGNTOOL "signtool.exe" PATHS
-        "c:/Program Files (x86)/Microsoft SDKs/ClickOnce/SignTool"
-        "c:/Program Files (x86)/Windows Kits/10/bin/10.0.22621.0/x64")
-    if (NOT SIGNTOOL)
-        message(FATAL_ERROR "Unable to locate signtool.exe used for code signing")
-    endif()
-    add_definitions(-DSIGNTOOL="${SIGNTOOL}")
+    #find_program(SIGNTOOL "signtool.exe" PATHS
+    #    "c:/Program Files (x86)/Microsoft SDKs/ClickOnce/SignTool"
+    #    "c:/Program Files (x86)/Windows Kits/10/bin/10.0.22621.0/x64")
+    #if (NOT SIGNTOOL)
+    #    message(FATAL_ERROR "Unable to locate signtool.exe used for code signing")
+    #endif()
+    #add_definitions(-DSIGNTOOL="${SIGNTOOL}")
 
-    add_custom_command(TARGET ${PROJECT_NAME}
-        POST_BUILD
-        COMMAND "${SIGNTOOL}" sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /a "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.exe")
+    #add_custom_command(TARGET ${PROJECT_NAME}
+    #    POST_BUILD
+    #    COMMAND "${SIGNTOOL}" sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /a "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.exe")
 
-    add_custom_command(TARGET ${PROJECT_NAME}
-        POST_BUILD
-        COMMAND "${SIGNTOOL}" sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /a "${CMAKE_BINARY_DIR}/dependencies/fat32format/fat32format.exe")
+    #add_custom_command(TARGET ${PROJECT_NAME}
+    #    POST_BUILD
+    #    COMMAND "${SIGNTOOL}" sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /a "${CMAKE_BINARY_DIR}/dependencies/fat32format/fat32format.exe")
 
     # Windeploy
     find_program(WINDEPLOYQT "windeployqt.exe" PATHS "${${QT}_DIR}/../../../bin")
@@ -250,7 +250,7 @@ if (WIN32)
         POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy
             "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.exe" "${CMAKE_BINARY_DIR}/dependencies/fat32format/fat32format.exe"
-            "${CMAKE_SOURCE_DIR}/../license.txt" "${CMAKE_SOURCE_DIR}/windows/rpi-imager-cli.cmd"
+            "${CMAKE_SOURCE_DIR}/../license.txt" "${CMAKE_SOURCE_DIR}/windows/hooverhigh-imager-cli.cmd"
             "${CMAKE_BINARY_DIR}/deploy")
 
     add_custom_command(TARGET ${PROJECT_NAME}
@@ -260,13 +260,13 @@ if (WIN32)
             "${CMAKE_BINARY_DIR}/deploy")
 
     configure_file(
-        "${CMAKE_CURRENT_SOURCE_DIR}/windows/rpi-imager.nsi.in"
-        "${CMAKE_CURRENT_BINARY_DIR}/rpi-imager.nsi"
+        "${CMAKE_CURRENT_SOURCE_DIR}/windows/hooverhigh-imager.nsi.in"
+        "${CMAKE_CURRENT_BINARY_DIR}/hooverhigh-imager.nsi"
         @ONLY)
 
     add_custom_command(TARGET ${PROJECT_NAME}
         POST_BUILD
-        COMMAND "${WINDEPLOYQT}" --no-translations --no-webkit2 --no-opengl-sw --angle --qmldir "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_BINARY_DIR}/deploy/rpi-imager.exe")
+        COMMAND "${WINDEPLOYQT}" --no-translations --no-webkit2 --no-opengl-sw --angle --qmldir "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_BINARY_DIR}/deploy/hooverhigh-imager.exe")
 
     # Remove excess files
     add_custom_command(TARGET ${PROJECT_NAME}
@@ -340,14 +340,14 @@ else()
     endif()
 
     configure_file(
-        "${CMAKE_CURRENT_SOURCE_DIR}/linux/rpi-imager.metainfo.xml.in"
-        "${CMAKE_CURRENT_BINARY_DIR}/rpi-imager.metainfo.xml"
+        "${CMAKE_CURRENT_SOURCE_DIR}/linux/hooverhigh-imager.metainfo.xml.in"
+        "${CMAKE_CURRENT_BINARY_DIR}/hooverhigh-imager.metainfo.xml"
         @ONLY)
 
-    install(TARGETS rpi-imager DESTINATION bin)
-    install(FILES icons/rpi-imager.png DESTINATION share/icons/hicolor/128x128/apps)
-    install(FILES linux/rpi-imager.desktop DESTINATION share/applications)
-    install(FILES "${CMAKE_CURRENT_BINARY_DIR}/rpi-imager.metainfo.xml" DESTINATION share/metainfo)
+    install(TARGETS hooverhigh-imager DESTINATION bin)
+    install(FILES icons/hooverhigh-imager.png DESTINATION share/icons/hicolor/128x128/apps)
+    install(FILES linux/hooverhigh-imager.desktop DESTINATION share/applications)
+    install(FILES "${CMAKE_CURRENT_BINARY_DIR}/hooverhigh-imager.metainfo.xml" DESTINATION share/metainfo)
 endif()
 
 include_directories(${CURL_INCLUDE_DIR} ${LibArchive_INCLUDE_DIR} ${OPENSSL_INCLUDE_DIR})

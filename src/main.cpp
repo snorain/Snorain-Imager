@@ -34,12 +34,14 @@ static QTextStream cerr(stderr);
 /* Newer Qt versions throw warnings if using ::endl instead of Qt::endl
    Older versions lack Qt::endl */
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-//using Qt::endl;
-#define endl  Qt::endl
+// using Qt::endl;
+#define endl Qt::endl
 #endif
 
 #ifdef Q_OS_WIN
-static void consoleMsgHandler(QtMsgType, const QMessageLogContext &, const QString &str) {
+#include <ios>
+static void consoleMsgHandler(QtMsgType, const QMessageLogContext &, const QString &str)
+{
     cerr << str << endl;
 }
 #endif
@@ -77,7 +79,7 @@ int main(int argc, char *argv[])
     QStringList fontList = QFontDatabase::applicationFontFamilies(QFontDatabase::addApplicationFont(":/fonts/Roboto-Regular.ttf"));
     QGuiApplication::setFont(QFont(fontList.first(), 10));
     if (QFile::exists("/usr/share/fonts/truetype/droid/DroidSansFallback.ttf"))
-            QFontDatabase::addApplicationFont("/usr/share/fonts/truetype/droid/DroidSansFallback.ttf");
+        QFontDatabase::addApplicationFont("/usr/share/fonts/truetype/droid/DroidSansFallback.ttf");
 
     QLocale::Language l = QLocale::system().language();
     if (l == QLocale::AnyLanguage || l == QLocale::C)
@@ -99,7 +101,7 @@ int main(int argc, char *argv[])
     QString customRepo;
     QUrl url;
     QStringList args = app.arguments();
-    for (int i=1; i < args.size(); i++)
+    for (int i = 1; i < args.size(); i++)
     {
         if (!args[i].startsWith("-") && url.isEmpty())
         {
@@ -117,13 +119,14 @@ int main(int argc, char *argv[])
                 }
                 else
                 {
-                    cerr << "Argument ignored because it is not a regular file: " << args[i] << endl;;
+                    cerr << "Argument ignored because it is not a regular file: " << args[i] << endl;
+                    ;
                 }
             }
         }
         else if (args[i] == "--repo")
         {
-            if (args.size()-i < 2 || args[i+1].startsWith("-"))
+            if (args.size() - i < 2 || args[i + 1].startsWith("-"))
             {
                 cerr << "Missing URL or file path after --repo" << endl;
                 return 1;
@@ -148,7 +151,7 @@ int main(int argc, char *argv[])
         }
         else if (args[i] == "--qm")
         {
-            if (args.size()-i < 2 || args[i+1].startsWith("-"))
+            if (args.size() - i < 2 || args[i + 1].startsWith("-"))
             {
                 cerr << "Missing QM file after --qm" << endl;
                 return 1;
@@ -214,7 +217,7 @@ int main(int argc, char *argv[])
         if (CFArrayGetCount(prefLangs))
         {
             char buf[32] = {0};
-            CFStringRef strRef = (CFStringRef) CFArrayGetValueAtIndex(prefLangs, 0);
+            CFStringRef strRef = (CFStringRef)CFArrayGetValueAtIndex(prefLangs, 0);
             CFStringGetCString(strRef, buf, sizeof(buf), kCFStringEncodingUTF8);
             langcode = buf;
             langcode.replace('-', '_');
@@ -250,8 +253,8 @@ int main(int argc, char *argv[])
         return -1;
 
     QObject *qmlwindow = engine.rootObjects().value(0);
-    qmlwindow->connect(&imageWriter, SIGNAL(downloadProgress(QVariant,QVariant)), qmlwindow, SLOT(onDownloadProgress(QVariant,QVariant)));
-    qmlwindow->connect(&imageWriter, SIGNAL(verifyProgress(QVariant,QVariant)), qmlwindow, SLOT(onVerifyProgress(QVariant,QVariant)));
+    qmlwindow->connect(&imageWriter, SIGNAL(downloadProgress(QVariant, QVariant)), qmlwindow, SLOT(onDownloadProgress(QVariant, QVariant)));
+    qmlwindow->connect(&imageWriter, SIGNAL(verifyProgress(QVariant, QVariant)), qmlwindow, SLOT(onVerifyProgress(QVariant, QVariant)));
     qmlwindow->connect(&imageWriter, SIGNAL(preparationStatusUpdate(QVariant)), qmlwindow, SLOT(onPreparationStatusUpdate(QVariant)));
     qmlwindow->connect(&imageWriter, SIGNAL(error(QVariant)), qmlwindow, SLOT(onError(QVariant)));
     qmlwindow->connect(&imageWriter, SIGNAL(success()), qmlwindow, SLOT(onSuccess()));
@@ -270,7 +273,7 @@ int main(int argc, char *argv[])
 
     if (x != -1 && y != -1)
     {
-        if ( !app.screenAt(QPoint(x,y)) || !app.screenAt(QPoint(x+w,y+h)) )
+        if (!app.screenAt(QPoint(x, y)) || !app.screenAt(QPoint(x + w, y + h)))
         {
             qDebug() << "Not restoring saved window position as it falls outside any currently attached screen";
             x = y = -1;
@@ -279,8 +282,8 @@ int main(int argc, char *argv[])
 
     if (x == -1 || y == -1)
     {
-        x = qMax(1, (screensize.width()-w)/2);
-        y = qMax(1, (screensize.height()-h)/2);
+        x = qMax(1, (screensize.width() - w) / 2);
+        y = qMax(1, (screensize.height() - h) / 2);
     }
 
     qmlwindow->setProperty("x", x);
@@ -302,4 +305,3 @@ int main(int argc, char *argv[])
 
     return rc;
 }
-
