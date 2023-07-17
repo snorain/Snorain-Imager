@@ -64,7 +64,7 @@ ApplicationWindow {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                 fillMode: Image.PreserveAspectFit
-                source: "icons/hooverhigh.png"
+                source: "icons/hooverhigh-logo.png"
                 width: window.width
                 height: window.height/2
             }

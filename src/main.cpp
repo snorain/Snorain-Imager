@@ -91,7 +91,7 @@ int main(int argc, char *argv[])
     app.setOrganizationName(imageWriter.constantOrg());
     app.setOrganizationDomain(imageWriter.constantDomain());
     app.setApplicationName(imageWriter.constantName());
-    app.setWindowIcon(QIcon(":/icons/rpi-imager.ico"));
+    app.setWindowIcon(QIcon(":/icons/hooverhigh-imager.ico"));
     NetworkAccessManagerFactory namf;
     QQmlApplicationEngine engine;
     QString customQm;
