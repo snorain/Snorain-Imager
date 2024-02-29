@@ -7,10 +7,10 @@
  */
 
 /* Imager info */
-#define IMAGER_NAME                       "HooverHigh Imager"
-#define IMAGER_VERSION                    "1.7.5"
-#define IMAGER_ORG                        "HooverHigh"
-#define IMAGER_DOMAIN                     "https://github.com/hooverhigh/hooverhigh-imager"
+#define IMAGER_NAME                       "Snorain Imager"
+#define IMAGER_VERSION                    "2.1.1"
+#define IMAGER_ORG                        "Snorain"
+#define IMAGER_DOMAIN                     "https://github.com/snorain/snorain-imager"
 
 /* Repository URL */
 #define OSLIST_URL                        "https://server1.hooverhigh.ml/rpi/imaging_utility_list.json"

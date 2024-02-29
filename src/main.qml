@@ -517,12 +517,12 @@ ApplicationWindow {
             description: qsTr("Select a custom .img from your computer")
         }
         
-        ListElement {
+        /*ListElement {
             url: "internal://img_url"
             icon: "icons/use_custom.png"
             name: qsTr("Use custom from URL")
             description: qsTr("Select a custom .img from a URL")
-        }
+        }*/
 
         Component.onCompleted: {
             if (imageWriter.isOnline()) {
@@ -1193,13 +1193,13 @@ ApplicationWindow {
             if (oslist === false)
                 return
             
-            /*var level = osmodel.count-3
+            var level = osmodel.count-2
             if (osmodel.count > 3) {
-              level = osmodel.count-4
-            }*/
+              level = osmodel.count-3
+            }
                 
             for (var i in oslist) {
-                osmodel.insert(osmodel.count-3, oslist[i])
+                osmodel.insert(level, oslist[i])
             }
 
             if ("imager" in o) {

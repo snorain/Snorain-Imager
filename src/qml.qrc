@@ -1,8 +1,17 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>MsgPopup.qml</file>
+        <file>CustomIMGPopup.qml</file>
+        <file>OptionsPopup.qml</file>
+        <file>UseSavedSettingsPopup.qml</file>
+        <file>qmlcomponents/ImButton.qml</file>
+        <file>qmlcomponents/ImCheckBox.qml</file>
+        <file>qmlcomponents/ImRadioButton.qml</file>
+        <file>countries.txt</file>
+        <file>timezones.txt</file>
+        <file>keymap-layouts.txt</file>
         <file>qtquickcontrols2.conf</file>
-        <file>icons/hooverhigh-imager.ico</file>
         <file>fonts/Roboto-Bold.ttf</file>
         <file>fonts/Roboto-Light.ttf</file>
         <file>fonts/Roboto-Regular.ttf</file>
@@ -11,32 +20,24 @@
         <file>icons/ic_sd_storage_40px.svg</file>
         <file>icons/ic_storage_40px.svg</file>
         <file>icons/ic_usb_40px.svg</file>
-        <file>MsgPopup.qml</file>
-        <file>CustomIMGPopup.qml</file>
+        <file>icons/ic_info_16px.png</file>
+        <file>icons/ic_info_12px.png</file>
+        <file>icons/ic_cog_red.svg</file>
         <file>icons/use_custom.png</file>
         <file>icons/erase.png</file>
         <file>icons/cat_raspberry_pi_os.png</file>
+        <file>icons/ubuntu.svg</file>
         <file>icons/cat_other_specific_purpose_operating_systems.png</file>
         <file>icons/cat_other_general_purpose_operating_systems.png</file>
         <file>icons/cat_misc_utility_images.png</file>
         <file>icons/cat_media_players.png</file>
         <file>icons/cat_emulation_and_games.png</file>
-        <file>OptionsPopup.qml</file>
-        <file>countries.txt</file>
-        <file>timezones.txt</file>
-        <file>UseSavedSettingsPopup.qml</file>
-        <file>icons/ic_info_16px.png</file>
-        <file>icons/ic_info_12px.png</file>
-        <file>keymap-layouts.txt</file>
-        <file>icons/ic_cog_red.svg</file>
         <file>icons/cat_home_automation.png</file>
         <file>icons/cat_language_specific_operating_systems.png</file>
         <file>icons/cat_3d_printing.png</file>
+        <file>icons/cat_digital_signage.png</file>
         <file>icons/logo_stacked_imager.png</file>
         <file>icons/hooverhigh-logo.png</file>
-        <file>qmlcomponents/ImButton.qml</file>
-        <file>qmlcomponents/ImCheckBox.qml</file>
-        <file>qmlcomponents/ImRadioButton.qml</file>
-        <file>icons/cat_digital_signage.png</file>
+        <file>icons/hooverhigh-imager.ico</file>
     </qresource>
 </RCC>
