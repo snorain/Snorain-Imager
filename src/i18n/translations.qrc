@@ -1,17 +1,17 @@
 <RCC>
     <qresource prefix="/i18n">
-        <file>hooverhigh-imager_de.qm</file>
-        <file>hooverhigh-imager_en.qm</file>
-        <file>hooverhigh-imager_fr.qm</file>
-        <file>hooverhigh-imager_it.qm</file>
-        <file>hooverhigh-imager_ko.qm</file>
-        <file>hooverhigh-imager_nl.qm</file>
-        <file>hooverhigh-imager_ru.qm</file>
-        <file>hooverhigh-imager_sl.qm</file>
-        <file>hooverhigh-imager_sk.qm</file>
-        <file>hooverhigh-imager_tr.qm</file>
-        <file>hooverhigh-imager_zh.qm</file>
-        <file>hooverhigh-imager_ca.qm</file>
-        <file>hooverhigh-imager_ja.qm</file>
+        <file>snorain-imager_de.qm</file>
+        <file>snorain-imager_en.qm</file>
+        <file>snorain-imager_fr.qm</file>
+        <file>snorain-imager_it.qm</file>
+        <file>snorain-imager_ko.qm</file>
+        <file>snorain-imager_nl.qm</file>
+        <file>snorain-imager_ru.qm</file>
+        <file>snorain-imager_sl.qm</file>
+        <file>snorain-imager_sk.qm</file>
+        <file>snorain-imager_tr.qm</file>
+        <file>snorain-imager_zh.qm</file>
+        <file>snorain-imager_ca.qm</file>
+        <file>snorain-imager_ja.qm</file>
     </qresource>
 </RCC>

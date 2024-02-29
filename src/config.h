@@ -13,10 +13,10 @@
 #define IMAGER_DOMAIN                     "https://github.com/snorain/snorain-imager"
 
 /* Repository URL */
-#define OSLIST_URL                        "https://server1.hooverhigh.ml/rpi/imaging_utility_list.json"
+#define OSLIST_URL                        "https://cdn.oxmc-servers.online/uploads/snorain/imager.json"
 
 /* Time synchronization URL (only used on eglfs QPA platform, URL must be HTTP) */
-#define TIME_URL                          "http://server1.hooverhigh.ml/rpi/imaging_utility_list.json?time_synchronization"
+#define TIME_URL                          "http://cdn.oxmc-servers.online/uploads/snorain/imager.json?time_synchronization"
 
 /* Phone home the name of images downloaded for image popularity ranking */
 #define TELEMETRY_URL                     "https://rpi-imager-stats.raspberrypi.com/downloads"

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Snorain Imager
+Comment=Snorain Imager
+Icon=snorain-imager
+Exec=snorain-imager
+Categories=Utility
+StartupNotify=false

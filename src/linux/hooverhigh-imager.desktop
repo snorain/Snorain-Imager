@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Version=1.0
-Name=HooverHigh Imager
-Comment=Hooverhigh Imager
-Icon=hooverhigh-imager
-Exec=hooverhigh-imager
-Categories=Utility
-StartupNotify=false

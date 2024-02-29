@@ -25,8 +25,8 @@
         <file>icons/ic_cog_red.svg</file>
         <file>icons/use_custom.png</file>
         <file>icons/erase.png</file>
-        <file>icons/cat_raspberry_pi_os.png</file>
         <file>icons/ubuntu.svg</file>
+        <file>icons/cat_raspberry_pi_os.png</file>
         <file>icons/cat_other_specific_purpose_operating_systems.png</file>
         <file>icons/cat_other_general_purpose_operating_systems.png</file>
         <file>icons/cat_misc_utility_images.png</file>
@@ -36,8 +36,7 @@
         <file>icons/cat_language_specific_operating_systems.png</file>
         <file>icons/cat_3d_printing.png</file>
         <file>icons/cat_digital_signage.png</file>
-        <file>icons/logo_stacked_imager.png</file>
-        <file>icons/hooverhigh-logo.png</file>
-        <file>icons/hooverhigh-imager.ico</file>
+        <file>icons/snorain-logo.png</file>
+        <file>icons/snorain-imager.ico</file>
     </qresource>
 </RCC>

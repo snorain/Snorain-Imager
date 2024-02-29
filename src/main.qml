@@ -64,7 +64,7 @@ ApplicationWindow {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                 fillMode: Image.PreserveAspectFit
-                source: "icons/hooverhigh-logo.png"
+                source: "icons/snorain-logo.png"
                 width: window.width
                 height: window.height/2
             }
@@ -527,9 +527,9 @@ ApplicationWindow {
         Component.onCompleted: {
             if (imageWriter.isOnline()) {
                 fetchOSlist();
-                changeListElementByNameVisibility("Use custom from URL", osmodel, true);
+                /*changeListElementByNameVisibility("Use custom from URL", osmodel, true);
             } else {
-                changeListElementByNameVisibility("Use custom from URL", osmodel, false);
+                changeListElementByNameVisibility("Use custom from URL", osmodel, false);*/
             }
         }
     }
@@ -871,7 +871,7 @@ ApplicationWindow {
         yesButton: true
         noButton: true
         title: qsTr("Are you sure you want to quit?")
-        text: qsTr("Raspberry Pi Imager is still busy.<br>Are you sure you want to quit?")
+        text: qsTr("%1 is still busy.<br>Are you sure you want to quit?").arg(imageWriter.constantName())
         onYes: {
             Qt.quit()
         }
@@ -1057,7 +1057,7 @@ ApplicationWindow {
     }
     
     function selectImgURL() {
-        msgpopup.title = qsTr("Information")
+        msgpopup.title = qsTr("Select .img")
         msgpopup.text = msg
         msgpopup.openPopup()
     }
@@ -1193,13 +1193,13 @@ ApplicationWindow {
             if (oslist === false)
                 return
             
-            var level = osmodel.count-2
+            /*var level = osmodel.count-2
             if (osmodel.count > 3) {
               level = osmodel.count-3
-            }
+            }*/
                 
             for (var i in oslist) {
-                osmodel.insert(level, oslist[i])
+                osmodel.insert(osmodel.count-2, oslist[i])
             }
 
             if ("imager" in o) {
