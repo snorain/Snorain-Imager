@@ -1,10 +1,11 @@
 name: Build Ubuntu .deb
 
 on:
+  workflow_dispatch:
   push:
-    branches: [ "qml" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "qml" ]
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -23,3 +24,8 @@ jobs:
 
     - name: Build
       run: debuild -uc -us
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: 'ubuntu-build'
+        path: '*.deb'
