@@ -140,7 +140,7 @@ ImageWriter::ImageWriter(QObject *parent)
     }
     _settings.endGroup();
 
-    QDir dir(":/i18n", "rpi-imager_*.qm");
+    QDir dir(":/i18n", "snorain-imager_*.qm");
     const QStringList transFiles = dir.entryList();
     QLocale currentLocale;
     QStringList localeComponents = currentLocale.name().split('_');
@@ -1014,7 +1014,7 @@ void ImageWriter::changeLanguage(const QString &newLanguageName)
     qDebug() << "Changing language to" << langcode;
 
     QTranslator *trans = new QTranslator();
-    if (trans->load(":/i18n/rpi-imager_"+langcode+".qm"))
+    if (trans->load(":/i18n/snorain-imager_"+langcode+".qm"))
     {
         replaceTranslator(trans);
         _currentLang = newLanguageName;
