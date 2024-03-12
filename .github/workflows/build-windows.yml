@@ -1,10 +1,11 @@
 name: Build Windows
 
 on:
+  workflow_dispatch:
   push:
-    branches: [ "qml" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "qml" ]
+    branches: [ "main" ]
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
@@ -32,3 +33,8 @@ jobs:
     - name: Build
       # Build your program with the given configuration
       run: cmake --build ${{github.workspace}}\build --config ${{env.BUILD_TYPE}}
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: 'windows-build'
+        path: 'build/*'
