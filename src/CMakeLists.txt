@@ -345,7 +345,7 @@ else()
         @ONLY)
 
     install(TARGETS snorain-imager DESTINATION bin)
-    install(FILES icons/snorain-imager.png DESTINATION share/icons/hicolor/128x128/apps)
+    install(FILES icons/snorain-logo.png DESTINATION share/icons/hicolor/128x128/apps)
     install(FILES linux/snorain-imager.desktop DESTINATION share/applications)
     install(FILES "${CMAKE_CURRENT_BINARY_DIR}/snorain-imager.metainfo.xml" DESTINATION share/metainfo)
 endif()
