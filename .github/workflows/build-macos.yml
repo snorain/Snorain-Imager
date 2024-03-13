@@ -35,7 +35,7 @@ jobs:
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
     - name: Compress app
-      run: zip -r snorain-imager-mac.zip build/ -x "*.DS_Store"
+      run: zip -r snorain-imager-mac.zip build/snorain-imager.app -x "*.DS_Store"
 
     - name: Upload app
       uses: actions/upload-artifact@v4
