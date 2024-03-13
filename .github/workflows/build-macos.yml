@@ -38,7 +38,7 @@ jobs:
       run: zip -vr snorain-imager-mac.zip build/snorain-imager.app -x "*.DS_Store"
 
     - name: Upload app
-    - uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v4
       with:
         name: 'mac-build'
         path: 'snorain-imager-mac.zip'
