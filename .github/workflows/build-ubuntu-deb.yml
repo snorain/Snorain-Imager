@@ -25,7 +25,9 @@ jobs:
     - name: Build
       run: debuild -uc -us
 
-    - run: ls
+    - run: |
+        ls ../
+        ls *
 
     - uses: actions/upload-artifact@v4
       with:
