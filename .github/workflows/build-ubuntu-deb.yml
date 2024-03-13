@@ -33,5 +33,5 @@ jobs:
       with:
         name: 'ubuntu-build'
         path: |
-          '../*.deb'
-          '../*.ddeb'
+          ../*.deb
+          ../*.ddeb
