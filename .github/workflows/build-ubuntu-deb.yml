@@ -25,6 +25,8 @@ jobs:
     - name: Build
       run: debuild -uc -us
 
+    - run: ls
+
     - uses: actions/upload-artifact@v4
       with:
         name: 'ubuntu-build'
