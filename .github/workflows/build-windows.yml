@@ -36,10 +36,10 @@ jobs:
       run: choco install mingw
 
     - name: Configure CMake
-      run: cmake -B ${{github.workspace}}\build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+      run: cmake -B ${{github.workspace}}/build -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
 
     - name: Build
-      run: cmake --build ${{github.workspace}}\build --config ${{env.BUILD_TYPE}}
+      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
     - uses: actions/upload-artifact@v4
       with:
