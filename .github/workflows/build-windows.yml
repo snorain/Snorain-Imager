@@ -39,6 +39,7 @@ jobs:
         arch: 'win32_mingw73'
 
     - name: Configure CMake
+      shell: msys2 {0}
       run: cmake -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_PREFIX_PATH="${{env.Qt5_Dir}}/lib/cmake/" -DQt5_DIR=${{env.Qt5_Dir}}/lib/cmake/Qt5/ -G "CodeBlocks - MinGW Makefiles" -B '${{github.workspace}}'/build
 
     - name: Build
