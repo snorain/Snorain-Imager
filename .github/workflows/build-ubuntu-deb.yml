@@ -25,12 +25,15 @@ jobs:
     - name: Build
       run: debuild -uc -us
 
-    - run: ls -lah ../
-    - run: ls -lah ${{github.workspace}}
+    - name: move built assets
+    - run: |
+        mkdir ${{github.workspace}}/build
+        mv ../*.deb ${{github.workspace}}/build
+        mv ../*.ddeb ${{github.workspace}}/build
 
     - uses: actions/upload-artifact@v4
       with:
         name: 'ubuntu-build'
         path: |
-          ${{github.workspace}}/*.deb
-          ${{github.workspace}}/*.ddeb
+          ${{github.workspace}}/build/*.deb
+          ${{github.workspace}}/build/*.ddeb
