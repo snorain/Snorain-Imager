@@ -2,10 +2,10 @@ name: Build Ubuntu .deb
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  #push:
+  #  branches: [ "main" ]
+  #pull_request:
+  #  branches: [ "main" ]
 
 jobs:
   build:
@@ -35,3 +35,4 @@ jobs:
         path: |
           ${{github.workspace}}/*.deb
           ${{github.workspace}}/*.ddeb
+          ../*.deb
