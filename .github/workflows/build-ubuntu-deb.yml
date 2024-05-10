@@ -26,7 +26,7 @@ jobs:
       run: debuild -uc -us
 
     - name: move built assets
-    - run: |
+      run: |
         mkdir ${{github.workspace}}/build
         mv ../*.deb ${{github.workspace}}/build
         mv ../*.ddeb ${{github.workspace}}/build
