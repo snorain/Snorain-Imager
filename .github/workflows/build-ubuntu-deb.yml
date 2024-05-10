@@ -26,8 +26,9 @@ jobs:
       run: debuild -uc -us
 
     - run: |
-        ls ../
-        ls *
+        ls -lah ../
+        ls -lah *
+        ls -lah ${{github.workspace}}
 
     - uses: actions/upload-artifact@v4
       with:
@@ -35,4 +36,3 @@ jobs:
         path: |
           ${{github.workspace}}/*.deb
           ${{github.workspace}}/*.ddeb
-          ${{github.workspace}}/../*.deb
